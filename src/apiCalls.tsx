@@ -1,13 +1,14 @@
 import axios from "axios";
-const instance = axios.create({
-    baseURL: "http://www.omdbapi.com/?apikey=efc30d58&",
-})
+
 export const getMovies = async () => {
-    const response = await instance.get("t=indiana+jones")
-    return response;
+    
+    const response = await axios.get("http://www.omdbapi.com/?apikey=efc30d58&s=indiana+jones")
+    console.log(response);
+    return response.data.Search;
+    
 }
 
-export const getDetailsMovie = async (id:number) => {
-    const response = await instance.get("i="+id)
-    return response;
+export const getDetailsMovie = async (id:string) => {
+    const response = await axios.get("http://www.omdbapi.com/?apikey=efc30d58&i="+id)
+    return response.data.Search;
 }
